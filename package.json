@@ -4,6 +4,7 @@
   "private": true,
   "description": "PuraviSoft company coming soon page",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "build": "node scripts/build-static.mjs"
   }
 }
