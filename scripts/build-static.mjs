@@ -5,7 +5,7 @@ import path from 'node:path';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = relative => readFile(path.join(root, relative));
 const [htmlBytes, cssBytes, font, emblem] = await Promise.all([
-  read('index.html'), read('version-4.css'),
+  read('scripts/index.template.html'), read('version-4.css'),
   read('assets/regular.woff2'), read('assets/puravisoft-emblem.png'),
 ]);
 const fontUrl = `data:font/woff2;base64,${font.toString('base64')}`;
@@ -21,4 +21,5 @@ if (/\b(?:src|href)=["'](?:assets\/|version-4\.css)/.test(html)) {
 const output = path.join(root, 'dist');
 await mkdir(output, { recursive: true });
 await writeFile(path.join(output, 'index.html'), html, 'utf8');
-console.log('Built dist/index.html — standalone page with embedded image, font, styles, and animation.');
+await writeFile(path.join(root, 'index.html'), html, 'utf8');
+console.log('Built index.html and dist/index.html — identical standalone pages with embedded image, font, styles, and animation.');
