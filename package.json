@@ -1,0 +1,9 @@
+{
+  "name": "puravisoft-coming-soon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PuraviSoft company coming soon page",
+  "scripts": {
+    "start": "node server.mjs"
+  }
+}
